@@ -1,0 +1,37 @@
+@()
+
+    @main("MisterGEE") {
+
+    <script type="text/javascript">
+
+        $(document).ready(initMap);
+
+         function clickAction(id) {
+            var query = createOverpassQuery(id, 'ags');
+            callOverpass(query, id, updateUI);
+         }
+
+         $(document).ajaxStart(function () {
+            $('#ajax_busy').show();
+        }).ajaxStop(function () {
+            $('#ajax_busy').hide();
+        });
+
+    </script>
+
+
+        <h1>MisterGEE</h1>
+        AGS: <input type="text" id="ags" />
+        <a href="#" onclick = "clickAction($('#ags').val())" class="button">Find</a>
+
+        <p>Find AGS (Amtlicher Gemeindeschlüssel) <a href="http://www.statistikportal.de/statistik-portal/gemeindeverz.asp">here</a></p>
+
+        <p><small><a href='@routes.Application.nominatim()'>Search by Name</a></small></p>
+
+        <div id="map" class="map"></div>
+
+        <div id="geojson_link"></div>
+
+        <div id="ajax_busy"><img src="@routes.Assets.at("images/ajax-loader.gif")"/></div>
+
+    }
