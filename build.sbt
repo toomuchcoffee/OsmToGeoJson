@@ -1,8 +1,8 @@
-name := "mistergee"
+name := "OsmToGeoJson"
 
 version := "1.0"
 
-lazy val `mistergee` = (project in file(".")).enablePlugins(PlayScala)
+lazy val `OsmToGeoJson` = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.11.1"
 
